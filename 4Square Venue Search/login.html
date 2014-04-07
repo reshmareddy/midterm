@@ -1,0 +1,298 @@
+<!DOCTYPE>
+<html>
+<head>
+<style type='text/css'>
+body {
+	background-image: url(http://sites.psu.edu/english137h/wp-content/uploads/sites/653/2013/03/Abroad-Collage.jpeg);
+	
+	
+}
+a {text-decoration: none;}
+
+.container {
+	
+	background-color: #000;
+
+/*  Prevents Flickering  */
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+}
+
+
+
+
+header {
+	height: 60px;
+	position: relative;
+	background-color: #A30000;
+}
+
+header a img {
+	padding: 15px 15px;
+}
+
+.burger {
+	position: absolute;
+	float: left;
+	padding: 10px;
+	top: 4px;
+	left: 10px;
+	
+	display: none;
+}
+.burger li {
+	width: 30px;
+	height: 4px;
+	background-color: #fff;
+	border-radius: 3px;
+	margin: 5px 0;
+}
+.burger.open li {background-color: #d9dde1;}
+
+nav {
+	position: absolute;
+	top: 0;
+	right: 5px;
+}
+nav li {
+	float: left;
+	display: inline-block;
+	
+}
+nav li a {
+	font-size: 14px;
+	color: #9aa6af;
+	padding: 15px 15px;
+	
+	display: block;
+}
+nav li a:hover {color: #000;}
+
+/*login */
+nav #login-trigger {}
+
+nav #login-content {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      z-index: 999;    
+      background: #fff;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+      background-image: -webkit-linear-gradient(top, #fff, #eee);
+      background-image: -moz-linear-gradient(top, #fff, #eee);
+      background-image: -ms-linear-gradient(top, #fff, #eee);
+      background-image: -o-linear-gradient(top, #fff, #eee);
+      background-image: linear-gradient(top, #fff, #eee);  
+      padding: 25px;
+      -moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      -moz-border-radius: 3px 0 3px 3px;
+      -webkit-border-radius: 3px 0 3px 3px;
+      border-radius: 3px 0 3px 3px;
+}
+    
+nav li #login-content {
+      width: 200px;  
+}
+
+#login {   
+      padding: 0;
+      cursor: pointer;
+}
+
+/*signup*/
+nav #signup-trigger {}
+
+nav #signup-content {
+      display: none;
+      position: absolute;
+      top: 60px;
+	  
+      right: 0;
+      z-index: 999;    
+      background: #fff;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+      background-image: -webkit-linear-gradient(top, #fff, #eee);
+      background-image: -moz-linear-gradient(top, #fff, #eee);
+      background-image: -ms-linear-gradient(top, #fff, #eee);
+      background-image: -o-linear-gradient(top, #fff, #eee);
+      background-image: linear-gradient(top, #fff, #eee);  
+      padding: 15px;
+      -moz-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      -webkit-box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+      -moz-border-radius: 3px 0 3px 3px;
+      -webkit-border-radius: 3px 0 3px 3px;
+      border-radius: 10px 0 10px 10px;
+}
+    
+nav li #signup-content {
+      width: 400px; 
+	  height: 400 px;
+}
+
+#signup {   
+      padding: 0;
+      cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    
+	$('#signup-trigger').click(function(){
+        if($('#login-content').is(":visible")) 
+            $('#login-content').slideUp(function(){
+                if($('#signup-content').is(":visible"))
+                    $('#signup-content').slideUp().removeClass('active');
+                else
+                   $('#signup-content').slideDown().addClass('active');            
+                    }).removeClass('active');
+        else
+            if($('#signup-content').is(":visible"))
+                $('#signup-content').slideUp().removeClass('active');
+            else
+               $('#signup-content').slideDown().addClass('active');
+		return false;
+	});
+    
+	$('#login-trigger').click(function(){
+        if($('#signup-content').is(":visible")) 
+            $('#signup-content').slideUp(function(){
+                if($('#login-content').is(":visible"))
+                    $('#login-content').slideUp().removeClass('active');
+                else
+                   $('#login-content').slideDown().addClass('active');           
+            }).removeClass('active');
+        else
+            if($('#login-content').is(":visible"))
+                $('#login-content').slideUp().removeClass('active');
+            else
+               $('#login-content').slideDown().addClass('active');
+		return false;
+	});
+    
+    $(document).click(function(){
+        $('#login-content').slideUp().removeClass('active');
+        $('#signup-content').slideUp().removeClass('active');
+    });
+	$('#signup-content').click(function(e) {
+	    e.stopPropagation();
+	});
+    
+	$('#login-content').click(function(e) {
+	    e.stopPropagation();
+	});
+
+});
+</script>
+<body>
+<div class="container">
+
+	<header>     
+		<center><h1>4Square Venue Search</h1></center>
+        
+	</header>
+
+	<nav>
+		<ul>
+	        <li id="login">
+	            <a id="login-trigger" href="#"><b>Login</b> </a>
+	
+	            <div id="login-content">
+	                
+					<script type = "text/javascript">
+
+var count = 2;
+function validate() {
+var un = document.myform.username.value;
+var pw = document.myform.pword.value;
+var valid = false;
+
+var unArray = ["Reshma", "Mounica", "Sowmya", "Divya"];  // as many as you like - no comma after final entry
+var pwArray = ["Password1", "Password2", "Password3", "Password4"];  // the corresponding passwords;
+
+for (var i=0; i <unArray.length; i++) {
+if ((un == unArray[i]) && (pw == pwArray[i])) {
+valid = true;
+break;
+}
+}
+
+if (valid) {
+alert ("Login was successful");
+window.location = "file:///C:/Users/reshma/Desktop/4Square%20Venue%20Search/main.html";
+return false;
+}
+
+var t = " tries";
+if (count == 1) {t = " try"}
+
+if (count >= 1) {
+alert ("Invalid username and/or password.  You have " + count + t + " left.");
+document.myform.username.value = "";
+document.myform.pword.value = "";
+setTimeout("document.myform.username.focus()", 25);
+setTimeout("document.myform.username.select()", 25);
+count --;
+}
+
+else {
+alert ("Still incorrect! You have no more tries left!");
+document.myform.username.value = "No more tries allowed!";
+document.myform.pword.value = "";
+document.myform.username.disabled = true;
+document.myform.pword.disabled = true;
+return false;
+}
+
+}
+
+</script>
+
+<form name = "myform">
+<p>ENTER USER NAME <input type="text" name="username"> ENTER PASSWORD <input type="password" name="pword">
+<input type="button" value="Check In" name="Submit" onclick= "validate()">
+</p>
+
+</form>
+	            </div>                     
+	        </li>
+	        <li id="signup">
+	            <a id="signup-trigger" href="#"><b>Signup</b></a>
+	
+	            <div id="signup-content">
+	                <form>
+	                    <fieldset id="inputs">
+	                        <input type="text" class="span6" name="name" placeholder="First Name">
+                            <input type="text" class="span6" name="LastName" placeholder="Last Name">
+                            <input type="text" class="span6" name="email" placeholder="Email">
+                            <input type="text" class="span6" name="telephone" placeholder="Telephone">
+                            <textarea rows="3" class="span6" name="address" placeholder="Address"></textarea>
+                            <input type="password" class="span6" name="password" placeholder="Password">
+                            <input type="password" class="span6" name="password2" placeholder="Re-enter Password">
+                            <div>
+                                <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+	                    </fieldset>
+	                    <fieldset id="actions">
+	                        <input type="submit" id="submit" value="Log in">
+	                        <label><input type="checkbox" checked="checked"> Keep me </label>
+							<label><input type="checkbox" checked="checked"> Keep me signed in</label>
+	                    </fieldset>
+	                </form>
+	            </div>                     
+	        </li>
+	        
+    	</ul>
+	</nav>
+	
+	
+</div>
+</body>
+</head>
+</html>
+
